@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getPosts } from '../actions/PostActions'; 
+import { getPosts, deletePost } from '../actions/PostActions'; 
 
-const Home = ({ posts, getPosts }) => {
+const Home = ({ posts, getPosts, deletePost }) => {
         
     useEffect(() => {       
         getPosts();
@@ -18,6 +18,8 @@ const Home = ({ posts, getPosts }) => {
                                 <div className="card-content white-text">
                                     <span className="card-title">{post.title}</span>
                                     <p>{post.body}</p>
+                                    <br />
+                                    <button className="btn" onClick={() => deletePost(post.id)}>Delete post</button>
                                 </div>                        
                             </div>
                         </div>
@@ -37,4 +39,4 @@ const mapStateToProps = (state) => ({
     posts: state.posts
 })
 
-export default connect(mapStateToProps, { getPosts })(Home);
+export default connect(mapStateToProps, { getPosts, deletePost })(Home);

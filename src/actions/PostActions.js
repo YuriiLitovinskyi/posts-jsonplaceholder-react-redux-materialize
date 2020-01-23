@@ -1,4 +1,4 @@
-import { GET_POSTS } from './Types';
+import { GET_POSTS, DELETE_POST } from './Types';
 
 export const getPosts = () => async (dispatch) => {
    
@@ -10,4 +10,11 @@ export const getPosts = () => async (dispatch) => {
             payload: posts.slice(0, 10)
         })
    
+}
+
+export const deletePost = (id) => (dispatch) => {
+    dispatch({
+        type: DELETE_POST,
+        payload: id
+    })
 }
