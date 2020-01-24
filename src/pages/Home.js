@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getPosts, deletePost } from '../actions/PostActions'; 
+import AddPostForm from './AddPostForm';
 
 const Home = ({ posts, getPosts, deletePost }) => {
         
@@ -8,10 +9,11 @@ const Home = ({ posts, getPosts, deletePost }) => {
         getPosts();
         //eslint-disable-next-line
     }, []);
-
-    if (posts){
-        return (
-            <div className="container center">                 
+    
+    const postView = () => {
+        if (posts){
+            return (
+                <div>
                     {posts.map(post =>                         
                         <div key={post.id} className="col s12 m5">
                             <div className="card blue-grey darken-1">
@@ -23,17 +25,25 @@ const Home = ({ posts, getPosts, deletePost }) => {
                                 </div>                        
                             </div>
                         </div>
-                    )}                          
-            </div>
-        )
-    } else {
-        return (
-            <div className="container center">
-                <h4>No posts...</h4>
-            </div>
-        )
-    }    
-};
+                    )}    
+                </div>      
+            )
+        } else {
+            return (               
+                    <h4>No posts...</h4>               
+            )
+        }    
+    };
+
+    return (
+        <div className="container center">  
+            <AddPostForm />
+            { postView() }
+        </div>
+    )
+}
+
+    
 
 const mapStateToProps = (state) => ({
     posts: state.posts
