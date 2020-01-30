@@ -21,7 +21,7 @@ const Home = ({ posts, getPosts, deletePost }) => {
                                     <span className="card-title">{post.title}</span>
                                     <p>{post.body}</p>
                                     <br />
-                                    <button className="btn" onClick={() => deletePost(post.id)}>Delete post</button>
+                                    <button className="btn red lighten-2" onClick={() => deletePost(post.id)}>Delete post</button>                                    
                                 </div>                        
                             </div>
                         </div>

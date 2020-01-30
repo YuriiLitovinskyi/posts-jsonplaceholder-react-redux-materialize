@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addPost } from '../actions/PostActions'; 
 
-const AddPostForm = ({ posts, addPost }) => {
+const AddPostForm = ({ addPost }) => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
   
@@ -49,7 +49,7 @@ const AddPostForm = ({ posts, addPost }) => {
 };
 
 const mapStateToProps = (state) => ({
-    posts: state.posts
+    posts: state.posts  
 })
 
 export default connect(mapStateToProps, { addPost })(AddPostForm);

@@ -4,7 +4,8 @@ import { GET_POSTS, DELETE_POST, ADD_POST } from './Types';
 export const getPosts = () => async (dispatch) => {
    
         const responce = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const posts = await responce.json();         
+        const posts = await responce.json();  
+        //console.log(posts);       
 
         dispatch({
             type: GET_POSTS,
@@ -33,6 +34,5 @@ export const addPost = (title, body) => async (dispatch) => {
     dispatch({
         type: ADD_POST,
         payload: addedPost
-    }) 
-  
+    })   
 }
